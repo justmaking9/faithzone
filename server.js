@@ -1,0 +1,10 @@
+const express=require('express'),cors=require('cors'),fs=require('fs'),path=require('path');
+const app=express();app.use(cors());app.use(express.json({limit:'1mb'}));app.use(express.static(__dirname));
+const FILE=process.env.DB_FILE||path.join(__dirname,'faithzone-data.json');
+const empty={services:[],announcements:[],events:[],prayers:[],songs:[]};
+const read=()=>{try{return JSON.parse(fs.readFileSync(FILE,'utf8'))}catch(e){return empty}};
+const write=d=>fs.writeFileSync(FILE,JSON.stringify(d,null,2));
+app.get('/api/data',(q,r)=>r.json(read()));
+app.post('/api/data',(q,r)=>{const d=q.body||{},c=read(),m={};for(const k of Object.keys(empty))m[k]=Array.isArray(d[k])?d[k]:(c[k]||[]);write(m);r.json({ok:true})});
+app.get('*',(q,r)=>r.sendFile(path.join(__dirname,'index.html')));
+app.listen(process.env.PORT||3000,()=>console.log('FaithZone running'));
