@@ -99,12 +99,41 @@ footer span{color:var(--golddk)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(max-width:600px){main.wrap{padding-top:20px}.hero,.verse-card,.about{padding:36px 22px;border-radius:18px}.card{padding:20px}.church{display:none}.row{grid-template-columns:1fr}.item{padding-right:18px;padding-bottom:48px}button.delete{top:auto;bottom:12px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* photo layer */
+.hero{background:linear-gradient(90deg,rgba(14,26,46,.95) 0%,rgba(14,26,46,.75) 38%,rgba(14,26,46,.05) 72%),url(img/hero.jpg) 30% 45%/cover;min-height:min(78vh,620px);display:flex;flex-direction:column;justify-content:flex-end;padding:56px 48px}
+.hero::before,.hero::after{display:none}
+.hero h1{font-size:clamp(44px,8vw,84px)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;position:relative}
+.hero .cta button{border-radius:999px;padding:14px 24px;font:700 14.5px/1 var(--sans);cursor:pointer;border:1px solid var(--gold)}
+.hero .cta .primary{background:var(--gold);color:var(--navy)}.hero .cta .primary:hover{background:var(--goldl)}
+.hero .cta .ghost{background:rgba(14,26,46,.4);color:var(--ivory);backdrop-filter:blur(4px)}.hero .cta .ghost:hover{background:rgba(14,26,46,.7)}
+.page-head{position:relative;overflow:hidden;border-radius:22px;padding:72px 40px 34px;margin-bottom:28px;background:var(--navy) var(--img) center/cover;color:var(--ivory);min-height:260px;display:flex;flex-direction:column;justify-content:flex-end}
+.page-head::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,26,46,.25) 0%,rgba(14,26,46,.92) 100%)}
+.page-head::after{content:'';position:absolute;inset:12px;border:1px solid rgba(201,164,92,.35);border-radius:14px;pointer-events:none}
+.page-head>*{position:relative}
+.page-head h2{color:var(--ivory);font-size:clamp(32px,5.5vw,52px)}
+.page-head p{color:#D5DCE7}
+.page-head .kicker{color:var(--gold)}
+.verse-card{background:linear-gradient(rgba(14,26,46,.82),rgba(14,26,46,.9)),url(img/bible.jpg) center/cover;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.about{background:linear-gradient(rgba(14,26,46,.78),rgba(14,26,46,.92)),url(img/light.jpg) center/cover;min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.chatbox{background:linear-gradient(rgba(14,26,46,.93),rgba(14,26,46,.96)),url(img/bible.jpg) center/cover}
+.photo-band{position:relative;border-radius:22px;overflow:hidden;margin-top:28px;min-height:280px;display:grid;grid-template-columns:1fr 1fr;background:var(--navy)}
+.photo-band .pic{background:url(img/prayer.jpg) 35% center/cover}
+.photo-band .txt{padding:40px;display:flex;flex-direction:column;justify-content:center;color:var(--ivory)}
+.photo-band .txt q{font:italic 400 clamp(20px,2.6vw,28px)/1.4 var(--serif);quotes:'“' '”'}
+.photo-band .txt span{font:700 12px/1 var(--sans);letter-spacing:.16em;color:var(--gold);margin-top:14px}
+.photo-band .txt button{align-self:flex-start;margin-top:22px;background:var(--gold);color:var(--navy);border:0;border-radius:999px;padding:12px 22px;font:700 14px/1 var(--sans);cursor:pointer}
+.dash .card{transition:transform .2s,box-shadow .2s}.dash .card:hover{transform:translateY(-3px);box-shadow:0 1px 0 var(--line),0 16px 32px -18px rgba(14,26,46,.35)}
+.num{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--gold);font:700 14px/1 var(--serif);margin-bottom:12px}
+@media(max-width:600px){.hero{padding:36px 22px;min-height:560px;background:linear-gradient(180deg,rgba(14,26,46,.65) 0%,rgba(14,26,46,.85) 45%,rgba(14,26,46,.97) 100%),url(img/hero.jpg) 50% 30%/cover}.page-head{padding:60px 22px 26px;min-height:220px;border-radius:18px}.photo-band{grid-template-columns:1fr}.photo-band .pic{min-height:220px}.photo-band .txt{padding:28px 22px}}
 </style></head><body>
 <header><div class="bar"><button class="brand" data-v="dashboard" aria-label="FaithZone home"><svg width="18" height="26" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 2v28M4 10.5h16"/></svg><b>FaithZone</b></button><div class="church">The Builders House Chapel International</div></div>
 <nav aria-label="Sections"><button data-v="dashboard" class="active">Dashboard</button><button data-v="services">Services</button><button data-v="announcements">Announcements</button><button data-v="events">Events</button><button data-v="prayer">Prayer</button><button data-v="verse">Verse</button><button data-v="worship">Worship</button><button data-v="helper">Christian Helper</button><button data-v="about">About</button></nav></header>
 <main class="wrap">
 <section id="dashboard">
  <div class="hero"><div class="frame"></div><span class="kicker">The Builders House Chapel International</span><h1>Welcome to FaithZone</h1><p class="tag">Our church, connected — one tap away.</p><p class="pastor">Senior Pastor: Pastor Vitalis Adu</p>
+ <div class="cta"><button class="primary" data-v="prayer">Share a prayer request</button><button class="ghost" data-v="helper">Ask the Christian Helper</button></div>
  <div class="verse-band"><div id="dashVerse"></div><div id="dashVerseRef"></div></div></div>
  <div class="grid dash">
   <div class="card"><span class="num">01</span><h3>Next service <button data-v="services">View all →</button></h3><div id="dashServices">Loading…</div></div>
@@ -114,19 +143,20 @@ footer span{color:var(--golddk)}
   <div class="card"><span class="num">05</span><h3>Worship <button data-v="worship">Songs →</button></h3><div id="dashSongs">Loading…</div></div>
   <div class="card"><span class="num">06</span><h3>Christian Helper <button data-v="helper">Ask →</button></h3><p style="color:var(--muted);margin:6px 0 0">Ask about Scripture, prayer or faith and receive a warm, Bible-based answer. Private and never saved.</p></div>
  </div>
+ <div class="photo-band"><div class="pic" role="img" aria-label="A person in prayer"></div><div class="txt"><q>Carry each other’s burdens, and in this way you will fulfil the law of Christ.</q><span>GALATIANS 6:2</span><button data-v="prayer">Visit the prayer wall</button></div></div>
 </section>
-<section id="services" class="hidden"><div class="page-head"><span class="kicker">Gather with us</span><h2>Service schedule</h2><p>Our weekly services and special gatherings.</p></div>
+<section id="services" class="hidden"><div class="page-head" style="--img:url(img/community.jpg)"><span class="kicker">Gather with us</span><h2>Service schedule</h2><p>Our weekly services and special gatherings.</p></div>
  <div class="grid two"><div class="card form"><h3 style="font-size:20px">Add a service</h3><label for="sTitle">Service name</label><input id="sTitle" placeholder="e.g. Sunday Worship" maxlength="200"><div class="row"><div><label for="sDay">Date</label><input id="sDay" type="date"></div><div><label for="sTime">Time</label><input id="sTime" type="time"></div></div><label for="sLocation">Location</label><input id="sLocation" placeholder="Location" maxlength="200"><button id="addService">Save service</button></div><div id="serviceList" class="list">Loading…</div></div></section>
-<section id="announcements" class="hidden"><div class="page-head"><span class="kicker">Church news</span><h2>Announcements</h2><p>News and updates for the whole church family.</p></div>
+<section id="announcements" class="hidden"><div class="page-head" style="--img:url(img/crowd.jpg)"><span class="kicker">Church news</span><h2>Announcements</h2><p>News and updates for the whole church family.</p></div>
  <div class="grid two"><div class="card form"><h3 style="font-size:20px">Post an announcement</h3><label for="aTitle">Title</label><input id="aTitle" placeholder="Title" maxlength="200"><label for="aBody">Message</label><textarea id="aBody" rows="4" placeholder="Message" maxlength="5000"></textarea><button id="addAnnouncement">Post announcement</button></div><div id="announcementList" class="list">Loading…</div></div></section>
-<section id="events" class="hidden"><div class="page-head"><span class="kicker">Coming up</span><h2>Events</h2><p>Upcoming gatherings and programmes.</p></div>
+<section id="events" class="hidden"><div class="page-head" style="--img:url(img/worship.jpg)"><span class="kicker">Coming up</span><h2>Events</h2><p>Upcoming gatherings and programmes.</p></div>
  <div class="grid two"><div class="card form"><h3 style="font-size:20px">Add an event</h3><label for="eTitle">Event</label><input id="eTitle" placeholder="Event name" maxlength="200"><div class="row"><div><label for="eDate">Date</label><input id="eDate" type="date"></div><div><label for="eTime">Time</label><input id="eTime" type="time"></div></div><label for="ePlace">Place</label><input id="ePlace" placeholder="Place" maxlength="200"><button id="addEvent">Add event</button></div><div id="eventList" class="list">Loading…</div></div></section>
-<section id="prayer" class="hidden"><div class="page-head"><span class="kicker">Praying together</span><h2>A shared wall of prayer</h2><p>“Carry each other’s burdens.” — Galatians 6:2. No sign-in needed; prayer requests and names are visible to everyone.</p></div>
+<section id="prayer" class="hidden"><div class="page-head" style="--img:url(img/prayer.jpg)"><span class="kicker">Praying together</span><h2>A shared wall of prayer</h2><p>“Carry each other’s burdens.” — Galatians 6:2. No sign-in needed; prayer requests and names are visible to everyone.</p></div>
  <div class="grid two"><div class="card form"><h3 style="font-size:20px">Share a request</h3><label for="pName">Name (optional)</label><input id="pName" placeholder="Leave empty to stay anonymous" maxlength="100"><label for="pRequest">Prayer request</label><textarea id="pRequest" rows="5" placeholder="What would you like prayer for?" maxlength="2000"></textarea><button id="addPrayer">Request prayer</button></div><div id="prayerList" class="list">Loading…</div></div></section>
 <section id="verse" class="hidden"><div class="verse-card"><svg width="22" height="32" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2v28M4 10.5h16"/></svg><blockquote id="verseText"></blockquote><p id="verseRef"></p><button id="newVerse">Another verse</button></div></section>
-<section id="worship" class="hidden"><div class="page-head"><span class="kicker">Lift your voice</span><h2>Worship songs</h2><p>The songs we sing together.</p></div>
+<section id="worship" class="hidden"><div class="page-head" style="--img:url(img/worship.jpg)"><span class="kicker">Lift your voice</span><h2>Worship songs</h2><p>The songs we sing together.</p></div>
  <div class="grid two"><div class="card form"><h3 style="font-size:20px">Add a song</h3><label for="songInput">Song title</label><input id="songInput" placeholder="Song title" maxlength="200"><button id="addSong">Add song</button></div><div id="songList" class="list">Loading…</div></div></section>
-<section id="helper" class="hidden"><div class="page-head"><span class="kicker">Christian Helper</span><h2>A guide for every question</h2><p>Ask about faith, Scripture or prayer. This chat is private and is not saved.</p></div>
+<section id="helper" class="hidden"><div class="page-head" style="--img:url(img/phone.jpg)"><span class="kicker">Christian Helper</span><h2>A guide for every question</h2><p>Ask about faith, Scripture or prayer. This chat is private and is not saved.</p></div>
  <div class="chatbox"><div class="chat-head"><span class="dot"></span>Christian Helper<small>Private · not saved</small></div><div id="chat" aria-live="polite"><div class="msg helper">Welcome to FaithZone. Ask about faith, Scripture, or prayer. This chat is private and is not saved.</div></div><div class="composer"><textarea id="message" rows="1" placeholder="Type your question…" aria-label="Your question"></textarea><button id="sendMessage">Send</button></div></div></section>
 <section id="about" class="hidden"><div class="about"><svg style="color:var(--gold)" width="22" height="32" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2v28M4 10.5h16"/></svg><h3>The Builders House Chapel International</h3><p class="pastor">Senior Pastor: Pastor Vitalis Adu</p><p class="body">FaithZone keeps the church connected through services, announcements, events, prayer, Scripture, worship, and the Christian Helper.</p></div></section>
 </main>
